@@ -11,7 +11,7 @@ const { protect } = require("./middlewares/authMiddleware");
 const { generateInterviewQuestions, generateConceptExplanation } = require("./controllers/aiController")
 const app = express();
 
-//Middleware to handle CORS
+//this is a Middleware to handle CORS
 app.use(
     cors({
         origin: "*",
