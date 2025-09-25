@@ -30,7 +30,7 @@ const conceptExplainPrompt = (question)=> `
     - After the explanation, provide a short and clear title that summarizes the concept for the article or page header.
     - If the explanation includes a code example, provide a small code block.
     - Keep the formatting very clean and clear.
-    - Return the result as a valid 350N object in the following format:
+    - Return the result as a valid JSON object in the following format:
     {
     "title": "Short title here?",
     "explanation": "Explanation here."

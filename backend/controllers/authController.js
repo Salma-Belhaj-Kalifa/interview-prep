@@ -93,6 +93,25 @@ const getUserProfile = async (req, res) => {
 }
 
 }; 
+const updateUserProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id); // req.user is from protect middleware
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Update fields if provided
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    if (req.body.profileImageUrl) user.profileImageUrl = req.body.profileImageUrl;
+
+    const updatedUser = await user.save();
+    res.status(200).json(updatedUser);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+};
 
 
-module.exports = { registerUser, loginUser, getUserProfile };
+module.exports = { registerUser, loginUser, getUserProfile, updateUserProfile };
